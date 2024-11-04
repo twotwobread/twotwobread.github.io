@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Go 포인터 정리하기 (인터페이스 vs 구현체 리시버 사용)
+title: (Go) 포인터 정리하기 (인터페이스 vs 구현체 리시버 사용)
 thumbnail-img: /assets/img/avatar-icon.png
 tags: [go, golang, pointer]
 ---

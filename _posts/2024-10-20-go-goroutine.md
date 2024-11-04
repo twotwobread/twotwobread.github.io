@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Go 고루틴 동작 방법 
+title: (Go) 고루틴 동작 방법 
 thumbnail-img: /assets/img/avatar-icon.png
 tags: [go, golang, 고랭, goroutine, 고루틴]
 ---
