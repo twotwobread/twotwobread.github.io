@@ -7,7 +7,8 @@ tags: [k8s, kubernetes, 쿠버네티스, cka]
 
 {: .box-note}
 **Note**
-회사의 인프라 관리를 위해 사용되며 지원이 제공되는 기술로, CKA 자격증 취득을 목표로 한 Kubernetes 학습 기록입니다.
+회사의 인프라 관리를 위해 사용되며 지원이 제공되는 기술로, CKA 자격증 취득을 목표로 한 Kubernetes 학습 기록입니다.  
+해당 포스팅에서는 쿠버네티스 클러스터를 관리하기 위해 마스터 노드에서 관리되는 리소스들과 주요 컴포넌트들에 대해서 공부해보겠습니다.
 
 ## 쿠버네티스란?
 공식 문서에 따르면, **쿠버네티스(Kubernetes)**는 "컨테이너화된 워크로드와 서비스를 관리하기 위한 이식 가능하고 확장 가능한 오픈소스 플랫폼"입니다. 쉽게 말해, 쿠버네티스는 컨테이너의 운영과 배포를 효율적으로 관리하는 플랫폼입니다.
@@ -39,8 +40,8 @@ k8s에는 컨테이너 관리, 운영, 통신 등을 위한 컴포넌트들이 �
 #### Pod
 - Pod는 쿠버네티스에서 가장 작은 단위의 컴포넌트이며, 하나 이상의 컨테이너를 캡슐화합니다.
 - 일반적으로 하나의 컨테이너가 포함되지만, 로깅 및 로컬 통신을 위해 여러 컨테이너가 하나의 Pod에 함께 존재할 수 있습니다.
-> yaml 예시
-	```
+- yaml 예시
+	```yaml
 	apiVersion: v1
 	kind: Pod
 	metadata:
@@ -53,12 +54,13 @@ k8s에는 컨테이너 관리, 운영, 통신 등을 위한 컴포넌트들이 �
 	containers:
 	- name: nginx-container
 		image: nginx
-	```
+	```  
+
 #### ReplicaSets
 - ReplicaSet은 항상 일정 수의 파드가 실행되도록 보장하며, 로드 밸런싱 및 스케일링을 지원합니다.
 - 노드의 자원이 부족할 경우, 다른 노드에 파드를 생성합니다.
-> yaml 예시
-	```
+- yaml 예시
+	```yaml
 	apiVersion: apps/v1
 	kind: ReplicaSet
 	metadata:
@@ -82,12 +84,13 @@ k8s에는 컨테이너 관리, 운영, 통신 등을 위한 컴포넌트들이 �
 		matchLabels:
 		type: front
 	```
-- ```kubectl scale --replicas=6 replicaset myapp-replica``` 와 같이 type, name 넣어서 scale 변경이 가능.
+- ```kubectl scale --replicas=6 replicaset myapp-replica``` 와 같이 type, name 넣어서 scale 변경이 가능.  
+
 #### Deployment
 - Deployment는 파드와 ReplicaSet을 관리하며, 애플리케이션의 배포 및 관리를 자동화합니다.
 - 롤링 업데이트, 스케일링, 버전 관리 등의 기능을 수행합니다.
-> yaml 예시
-	```
+- yaml 예시
+	```yaml
 	apiVersion: apps/v1
 	kind: Deployment
 	metadata:
@@ -106,7 +109,8 @@ k8s에는 컨테이너 관리, 운영, 통신 등을 위한 컴포넌트들이 �
 		containers:
 		- name: nginx
 			image: nginx
-	```
+	```   
+
 #### Service
 - Service는 컴포넌트 간의 통신을 가능하게 합니다.
 - Service types
@@ -115,7 +119,8 @@ k8s에는 컨테이너 관리, 운영, 통신 등을 위한 컴포넌트들이 �
 	- ClusterIP는 내부에서 노드에서의 통신을 위해서 사용합니다. -> 파드는 생성되면 동적인 IP가 할당됩니다. 하지만 이런 동적 IP는 파드가 다시 뜨면 또 바뀌고 하기 때문에 내부 통신을 위한 정적 IP를 할당합니다.
 	- LoadBalancer: 외부 트래픽을 규칙에 따라 여러 파드로 분산합니다.
 		![alt text](/assets/img/k8s-core3.png)  
-		- 그림처럼 특정 url로 접근했을 때 이 트래픽을 규칙에 의해 특정 파드의 특정 포트로 포워딩을 할 수 있습니다. 이를 통해서 트래픽을 균등하게 분산하여 안정적이고 확장 가능한 서비스를 제공할 수 있습니다.
+		- 그림처럼 특정 url로 접근했을 때 이 트래픽을 규칙에 의해 특정 파드의 특정 포트로 포워딩을 할 수 있습니다. 이를 통해서 트래픽을 균등하게 분산하여 안정적이고 확장 가능한 서비스를 제공할 수 있습니다.  
+
 #### Namespace
 - Namespace는 서비스, 디플로이먼트 등 관련된 리소스를 그룹화하여 클러스터 내 여러 애플리케이션 리소스를 효율적으로 관리할 수 있도록 도와줍니다.
 
