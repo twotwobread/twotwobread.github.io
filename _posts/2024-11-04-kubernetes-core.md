@@ -1,7 +1,7 @@
 ---
 layout: post
 title: (k8s) 쿠버네티스 클러스터 관리 리소스 및 주요 컴포넌트 분석
-thumbnail-img: /assets/img/avatar-icon.png
+thumbnail-img: /assets/img/k8s-core1.png
 tags: [k8s, kubernetes, 쿠버네티스, cka]
 ---
 

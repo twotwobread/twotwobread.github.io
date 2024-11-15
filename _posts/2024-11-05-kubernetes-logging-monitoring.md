@@ -1,7 +1,7 @@
 ---
 layout: post
 title: (k8s) 쿠버네티스 로깅 및 모니터링
-thumbnail-img: /assets/img/avatar-icon.png
+thumbnail-img: /assets/img/k8s-log1.png
 tags: [k8s, kubernetes, 쿠버네티스, cka]
 ---
 
@@ -11,7 +11,7 @@ tags: [k8s, kubernetes, 쿠버네티스, cka]
 
 ## 쿠버네티스 로깅 및 모니터링
 쿠버네티스에서 지원해주는 로깅으로는 애플리케이션의 로그를 볼 수 있는 CLI command인 ```kubectl logs <리소스 이름>```와 모니터링으로는 CPU, MEM 사용량 등 제한된 정보를 볼 수 있는 Metrics Server가 존재합니다. Metrics Server는 기본적인 리소스 메트릭 수집을 담당하는 컴포넌트로 클러스터 및 노드를 셋업했을 때 kube-api server처럼 기본적으로 배포되는 것이 아니라 직접 배포해줘야합니다. 그 이후 ```kubectl top``` CLI command를 통해서 CPU, MEM 사용량을 파악할 수 있습니다.
-![alt text](/assets/img/k8s-core1.png)
+![alt text](/assets/img/k8s-log1.png)
 하지만 Metrics Server는 기본적인 메트릭만 제공하여 완전한 메트릭 파이프라인을 구성하고 싶다면 k8s docs에서도 CNCF 프로젝트인 프로메테우스와 같은 모니터링 솔루션을 사용하라고 합니다. 그래서 해당 문서에서는 완전한 메트릭 파이프라인을 구성해보는 시간을 가져보겠습니다.  
 ### 프로메테우스
 프로메테우스는 사운드클라우드에서 구축된 오픈소스 시스템 모니터링 및 알림 툴킷입니다. 메트릭들을 타임스탬프와 함께 저장해서 시간에 따라서 메트릭 모니터링이 가능합니다.  
