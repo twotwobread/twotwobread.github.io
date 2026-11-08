@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="700" viewBox="0 0 1440 700" role="img" aria-labelledby="title desc">
+<title id="title">기존 Pi TUI 환경과 Paseo 기반 환경 구성 비교</title>
+<desc id="desc">기존에는 Windows Terminal에서 WSL의 tmux와 Pi TUI를 사용한다. 변경 후에는 Windows 노트북, iPhone, minipc가 같은 Tailscale 사설 네트워크에 연결된다. Paseo Desktop은 WSL과 minipc의 Daemon에 연결하고 iPhone도 minipc의 Daemon에 연결한다.</desc>
+<defs>
+ <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9" fill="none" stroke="#64748b" stroke-width="1.5"/></marker>
+ <marker id="green" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9" fill="none" stroke="#0d9488" stroke-width="1.5"/></marker>
+ <style>text{font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;fill:#172b4d}.heading{font-size:26px;font-weight:700}.label{font-size:21px;font-weight:700}.node{font-size:19px}.line{fill:none;stroke:#64748b;stroke-width:2.5;marker-end:url(#arrow)}.remote{fill:none;stroke:#0d9488;stroke-width:3;marker-end:url(#green)}</style>
+</defs>
+<rect width="1440" height="700" rx="24" fill="#f5f7fb"/>
+<!-- Before -->
+<rect x="32" y="28" width="410" height="644" rx="22" fill="#fff" stroke="#d7dfeb"/>
+<text x="60" y="76" class="heading">BEFORE</text>
+<rect x="60" y="112" width="354" height="528" rx="16" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="84" y="153" class="label">Windows 노트북</text>
+<rect x="84" y="184" width="306" height="70" rx="12" fill="#fff" stroke="#cbd5e1"/>
+<text x="237" y="227" text-anchor="middle" class="node">Windows Terminal</text>
+<path d="M237 254V300" class="line"/>
+<rect x="84" y="314" width="306" height="298" rx="12" fill="#e2e8f0"/>
+<text x="108" y="355" class="label">WSL2 Ubuntu</text>
+<rect x="108" y="386" width="258" height="66" rx="12" fill="#fff"/>
+<text x="237" y="427" text-anchor="middle" class="node">tmux</text>
+<path d="M237 452V494" class="line"/>
+<rect x="108" y="508" width="258" height="70" rx="12" fill="#fff"/>
+<text x="237" y="551" text-anchor="middle" class="node">Pi Agent (TUI)</text>
+<!-- After: all devices inside the Tailnet boundary -->
+<rect x="466" y="28" width="942" height="644" rx="22" fill="#fff" stroke="#b9d9d6"/>
+<text x="494" y="76" class="heading">AFTER</text>
+<rect x="490" y="112" width="894" height="528" rx="20" fill="#f0fdfa" stroke="#0d9488" stroke-width="2.5" stroke-dasharray="9 5"/>
+<rect x="932" y="96" width="432" height="32" rx="16" fill="#0f766e"/>
+<text x="1148" y="118" text-anchor="middle" style="font-size:17px;font-weight:700;fill:#fff">기존 Tailscale 사설 네트워크 (Tailnet)</text>
+<!-- Windows -->
+<rect x="514" y="150" width="846" height="230" rx="16" fill="#eff6ff" stroke="#bfdbfe"/>
+<text x="538" y="190" class="label">Windows 노트북</text>
+<rect x="538" y="236" width="260" height="80" rx="12" fill="#fff" stroke="#93b8ec"/>
+<text x="668" y="283" text-anchor="middle" class="label">Paseo Desktop</text>
+<path d="M798 276H952" class="line"/>
+<text x="875" y="260" text-anchor="middle" style="font-size:16px;fill:#52647c">로컬 연결</text>
+<rect x="968" y="214" width="368" height="142" rx="12" fill="#fff" stroke="#93b8ec"/>
+<text x="992" y="250" class="label">WSL2 Ubuntu</text>
+<text x="1152" y="293" text-anchor="middle" class="node">Paseo Daemon → Pi</text>
+<!-- Mobile -->
+<rect x="514" y="474" width="284" height="138" rx="12" fill="#fff" stroke="#6cc9b8"/>
+<text x="656" y="520" text-anchor="middle" class="label">iPhone</text>
+<text x="656" y="564" text-anchor="middle" class="node">Paseo Mobile</text>
+<!-- Remote runtime -->
+<rect x="984" y="474" width="376" height="138" rx="12" fill="#fff" stroke="#6cc9b8"/>
+<text x="1008" y="515" class="label">minipc · Ubuntu</text>
+<text x="1172" y="564" text-anchor="middle" class="node">Paseo Daemon → Pi</text>
+<path d="M668 316V422H1172V459" class="remote"/>
+<text x="920" y="409" text-anchor="middle" style="font-size:16px;fill:#0f766e">Tailscale로 원격 연결</text>
+<path d="M798 550H969" class="remote"/>
+<text x="883" y="518" text-anchor="middle" style="font-size:16px;fill:#0f766e">Tailscale로</text>
+<text x="883" y="538" text-anchor="middle" style="font-size:16px;fill:#0f766e">원격 연결</text>
+</svg>
